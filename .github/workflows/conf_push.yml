@@ -80,7 +80,7 @@ jobs:
     - name: Build Docker image
       if: env.drift == 'true'
       run: |
-        docker build -t Diagnostic_cf:lattest -f dockerfile .
+        docker build -t diagnostic_cf:lattest -f dockerfile .
 
     - name: Log in to Docker Hub
       if: env.drift == 'true'
@@ -89,7 +89,7 @@ jobs:
     - name: Push Docker image to Docker Hub
       if: env.drift == 'true'
       run: |
-        docker push Diagnostic_cf:lattest
+        docker push diagnostic_cf:lattest
 
     - name: Notify about the process
       run: |
