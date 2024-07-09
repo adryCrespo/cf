@@ -89,7 +89,8 @@ jobs:
     - name: Push Docker image to Docker Hub
       if: env.drift == 'true'
       run: |
-        docker push diagnostic_cf:lattest
+        docker tag diagnostic_cf:lattest andy453/pruebas:cf_mlops
+        docker push andy453/pruebas:cf_mlops
 
     - name: Notify about the process
       run: |
