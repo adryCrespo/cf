@@ -47,7 +47,16 @@ jobs:
     - name: see variables_2
       run: |
           echo "$env.drift"
+
+    - name: see variables 3
+      run : | 
+          echo "INSERTAR VARIABLES"
+          echo "chorradas=true" >> $VAR_JAJA
     
+    - name: see variables_4
+      run: |
+          echo "$VAR_JAJA"
+
     - name: Model Retraining if Data Drift detected
       if: env.drift == 'true'
       run: |
