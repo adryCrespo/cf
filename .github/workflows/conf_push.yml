@@ -40,11 +40,14 @@ jobs:
         fi
       shell: bash
 
-    - name: see variables
+    - name: see variables_1
       run: |
         echo "$GITHUB_ENV"
-        echo "$env.drift"
-
+    
+    - name: see variables_2
+      run: |
+          echo "$env.drift"
+    
     - name: Model Retraining if Data Drift detected
       if: env.drift == 'true'
       run: |
