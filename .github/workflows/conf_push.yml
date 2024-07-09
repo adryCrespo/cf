@@ -43,7 +43,8 @@ jobs:
     - name: see variables
       run: |
         echo "$GITHUB_ENV"
-        echo ${{ env.drift }}
+        echo "$env.drift"
+        
     - name: Model Retraining if Data Drift detected
       if: env.drift == 'true'
       run: |
