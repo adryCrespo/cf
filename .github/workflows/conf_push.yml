@@ -12,3 +12,30 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v2 
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run data drift detection
+      run: |
+        python scripts/drift_detection.py
+      continue-on-error: true 
+
+    - name: Check for data drift
+      id: check_drift
+      run: |
+        if grep -q 'drift_detected' drift_detected.txt; then
+          echo "Data drift detected."
+          echo "drift=true" >> $GITHUB_ENV
+        else
+          echo "No data drift detected."
+          echo "drift=false" >> $GITHUB_ENV
+        fi
+      shell: bash
