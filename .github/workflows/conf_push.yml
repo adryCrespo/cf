@@ -54,7 +54,7 @@ jobs:
       run : | 
           echo "INSERTAR VARIABLES"
           echo "hola, $VAR_JAJA"
-    
+          echo "bbbb=tralara" >> $GITHUB_ENV
 
 
     - name: Model Retraining if Data Drift detected
